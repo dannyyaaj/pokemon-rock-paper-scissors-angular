@@ -1,0 +1,21 @@
+.choice {
+  display: inline-block;
+  border: 4px solid white;
+  border-radius: 50%;
+  margin: 1em 1.25em;
+  padding: 2.5em 3em;
+
+  &:hover {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    img {
+      transform: scale(1.2);
+    }
+  }
+
+  img {
+    transition:
+      0,
+      3s scale ease-in-out;
+  }
+}
