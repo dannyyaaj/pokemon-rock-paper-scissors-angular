@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+
+h1 {
+  text-align: center;
+  padding: 2em;
+}
+
+@media only screen and (min-width: $tablet) {
+  h1 {
+    padding: 1em;
+  }
+}
