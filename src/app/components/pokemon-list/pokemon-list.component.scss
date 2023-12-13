@@ -1,0 +1,15 @@
+@import '../../styles//variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (min-width: $tablet) {
+  .container {
+    flex-direction: row;
+  }
+}

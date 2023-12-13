@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, tap, pipe, of, forkJoin } from 'rxjs';
+import { Observable, tap, pipe, of, forkJoin, BehaviorSubject, map } from 'rxjs';
 import { Pokemon } from 'src/app/models/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -12,30 +12,30 @@ export class PokemonListComponent implements OnInit {
   readonly starters: string[] = ['bulbasaur', 'charmander', 'squirtle']
 
   pokemonStarters: Pokemon[] = []
-  pokemonStarters$: Observable<Pokemon>[] = this.starters.map((starter) => this.pokemonService.getPokemonDetail(starter).pipe(
-    tap((pokemon) => {
-      const result: Pokemon[] = []
-      result.push(pokemon)
-      return of(result)
-    })
-  ))
+  pokemonStarters$: Observable<Pokemon>[] = [];
 
   ngOnInit(): void {
     this.getPokemon(this.starters)
   }
 
+  constructor(private pokemonService: PokemonService) { }
+
   private getPokemon(list: string[]) {
-    const arr: Observable<Pokemon>[] = [];
+    // map through string array and pass it to the pokemon service get detail method
     list.map((name: string) => {
-      arr.push(
+      this.pokemonStarters$.push(
         this.pokemonService.getPokemonDetail(name)
-      );
-    });
-    forkJoin([...arr]).subscribe((pokemonStarters: Pokemon[]) => {
-      this.pokemonStarters.push(...pokemonStarters)
+      )
     })
+
+    this.pokemonStarters$.map((pokemon) => pokemon.subscribe(
+      (starter) => this.pokemonStarters.push(starter)
+    ))
+
   }
 
-  constructor(private pokemonService: PokemonService) { }
+  calculateResults(choice: string) {
+    console.log(choice, 'inside pokemon list')
+  }
 
 }

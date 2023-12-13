@@ -1,33 +1,63 @@
 .choice {
   display: inline-block;
-  border: 4px solid white;
+  border: 0.25em solid transparent;
   border-radius: 50%;
-  margin: 1em 1.25em;
-  padding: 2.5em 3em;
+  margin: 2em;
+  // padding: 2em 2.75em;
+  height: 12em;
+  width: 12em;
+  position: relative;
+  z-index: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+
+  h3 {
+    margin-top: 0.75em;
+  }
 
   &:hover {
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    color: #fff;
+
     img {
-      transform: scale(1.2);
+      transform: scale(1.25);
     }
   }
 
   img {
-    transition:
-      0,
-      3s scale ease-in-out;
+    position: relative;
+    z-index: -1;
+    display: inline-block;
+    border-radius: 50%;
+    transition: 0.3s transform ease-in;
   }
 }
 
-#bulbasaur:hover {
-  background: forestgreen;
+#bulbasaur {
+  border-color: forestgreen;
+  &:hover {
+    border-color: #fff;
+    background: forestgreen;
+  }
 }
 
-#charmander:hover {
-  background: firebrick;
+#charmander {
+  border-color: firebrick;
+  &:hover {
+    border-color: #fff;
+    background: firebrick;
+  }
 }
 
-#squirtle:hover {
-  background: royalblue;
+#squirtle {
+  border-color: royalblue;
+  &:hover {
+    border-color: #fff;
+    background: royalblue;
+  }
 }

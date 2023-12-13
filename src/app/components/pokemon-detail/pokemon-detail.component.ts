@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon';
 
 @Component({
@@ -8,5 +8,14 @@ import { Pokemon } from 'src/app/models/pokemon';
 })
 export class PokemonDetailComponent {
   @Input() pokemon: Pokemon
+  @Output() pokemonChoice = new EventEmitter<string>()
+
+  onClick(event: Event) {
+    console.log(event, 'event obj')
+    const element = event.target as HTMLInputElement
+    const value = element.value
+    console.log(value, ' was clicked')
+    this.pokemonChoice.emit(value)
+  }
 
 }
