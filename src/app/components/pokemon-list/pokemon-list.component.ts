@@ -14,21 +14,18 @@ export class PokemonListComponent implements OnInit {
   onSelect(code: string) {
     this.pokemonSelected.emit(code)
   }
-  
+
   readonly starters: string[] = ['bulbasaur', 'charmander', 'squirtle'];
-  pokemonStarters: Pokemon[] = [];
+  pokemonStarters$!: Observable<Pokemon[]>
 
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-    this.getPokemon(this.starters)
+    this.pokemonStarters$ = this.getPokemon(this.starters)
   }
 
-  private getPokemon(list: string[]) {
-    forkJoin(list.map(name => this.pokemonService.getPokemonDetail(name)))
-      .subscribe((pokemonList: Pokemon[]) => {
-        this.pokemonStarters = pokemonList
-      })
+  private getPokemon(names: string[]): Observable<Pokemon[]> {
+    return forkJoin(names.map(name => this.pokemonService.getPokemonDetail(name)))
   }
 
 }
