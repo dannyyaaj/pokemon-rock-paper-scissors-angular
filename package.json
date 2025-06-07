@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng build --configuration production && npx angular-cli-ghpages --dir=dist/pokemon-rock-paper-scissors-angular"
   },
   "private": true,
   "dependencies": {

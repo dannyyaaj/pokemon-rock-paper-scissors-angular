@@ -17,9 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "baseHref": "https://github.com/dannyyaaj/pokemon-rock-paper-scissors-angular",
-            "outputPath": "dist/pokemon-rock-paper-scissors",
+            "outputPath": "dist/pokemon-rock-paper-scissors-angular",
             "index": "src/index.html",
+            "baseHref": "/pokemon-rock-paper-scissors-angular/",
             "main": "src/main.ts",
             "polyfills": [
               "zone.js"
