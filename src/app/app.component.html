@@ -1,4 +1,4 @@
 <poke-header></poke-header>
-<poke-score-board></poke-score-board>
-<poke-result></poke-result>
-<poke-pokemon-list></poke-pokemon-list>
+<poke-score-board [userScore]="userScore" [compScore]="compScore" (resetScores)="resetScoreBoard()"></poke-score-board>
+<poke-result [resultText]="resultText"></poke-result>
+<poke-pokemon-list (pokemonSelected)="calculateResults($event)"></poke-pokemon-list>

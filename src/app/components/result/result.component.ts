@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'poke-result',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./result.component.scss']
 })
 export class ResultComponent {
-
+  @Input() resultText!: string
 }

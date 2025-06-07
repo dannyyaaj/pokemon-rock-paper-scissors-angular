@@ -1,4 +1,4 @@
-<button [id]="pokemon.name" class="choice" (click)="onClick($event)" [value]="pokemon.name">
-  <h3>{{pokemon.name | titlecase}}</h3>
-  <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name">
+<button [id]="pokemon.name" class="choice" (click)="onClick()">
+  <h3>{{ pokemon.name | titlecase }}</h3>
+  <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
 </button>

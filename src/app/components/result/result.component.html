@@ -1,3 +1,4 @@
 <div class="result">
-  <p>Choose a pokemon to start the game.</p>
+  <p *ngIf="!resultText">Choose a Pokémon to start the game.</p>
+  <p *ngIf="resultText">{{ resultText }}</p>
 </div>

@@ -1,8 +1,8 @@
 <div class="score-board">
   <div id="trainer-label" class="badge">Trainer</div>
   <div id="comp-label" class="badge">Comp</div>
-  <span id="user-score">0 </span>:<span id="comp-score"> 0</span>
+  <span id="user-score">{{ userScore }} </span>:<span id="comp-score"> {{ compScore }}</span>
 </div>
 <div class="button">
-  <button id="reset" type="button">Reset</button>
+  <button id="reset" type="button" (click)="onReset()">Reset</button>
 </div>

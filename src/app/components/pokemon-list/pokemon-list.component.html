@@ -1,4 +1,4 @@
 <div class="container">
   <poke-pokemon-detail *ngFor="let pokemon of pokemonStarters" [pokemon]="pokemon"
-    (pokemonChoice)="calculateResults($event)"></poke-pokemon-detail>
+    (pokemonChoice)="onSelect($event)"></poke-pokemon-detail>
 </div>

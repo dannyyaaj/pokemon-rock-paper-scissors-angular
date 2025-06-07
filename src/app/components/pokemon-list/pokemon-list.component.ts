@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, tap, pipe, of, forkJoin, BehaviorSubject, map } from 'rxjs';
-import { Pokemon } from 'src/app/models/pokemon';
-import { PokemonService } from 'src/app/services/pokemon.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { Observable, forkJoin } from 'rxjs'
+import { Pokemon } from 'src/app/models/pokemon'
+import { PokemonService } from 'src/app/services/pokemon.service'
 
 @Component({
   selector: 'poke-pokemon-list',
@@ -9,33 +9,26 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
-  readonly starters: string[] = ['bulbasaur', 'charmander', 'squirtle']
+  @Output() pokemonSelected = new EventEmitter<string>();
 
-  pokemonStarters: Pokemon[] = []
-  pokemonStarters$: Observable<Pokemon>[] = [];
+  onSelect(code: string) {
+    this.pokemonSelected.emit(code)
+  }
+  
+  readonly starters: string[] = ['bulbasaur', 'charmander', 'squirtle'];
+  pokemonStarters: Pokemon[] = [];
+
+  constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
     this.getPokemon(this.starters)
   }
 
-  constructor(private pokemonService: PokemonService) { }
-
   private getPokemon(list: string[]) {
-    // map through string array and pass it to the pokemon service get detail method
-    list.map((name: string) => {
-      this.pokemonStarters$.push(
-        this.pokemonService.getPokemonDetail(name)
-      )
-    })
-
-    this.pokemonStarters$.map((pokemon) => pokemon.subscribe(
-      (starter) => this.pokemonStarters.push(starter)
-    ))
-
-  }
-
-  calculateResults(choice: string) {
-    console.log(choice, 'inside pokemon list')
+    forkJoin(list.map(name => this.pokemonService.getPokemonDetail(name)))
+      .subscribe((pokemonList: Pokemon[]) => {
+        this.pokemonStarters = pokemonList
+      })
   }
 
 }
