@@ -21,6 +21,7 @@ Choose your favorite Pokémon and battle against a computer opponent!
 - TypeScript
 - RxJS
 - PokéAPI integration
+- Karma (unit testing)
 
 ## Getting Started
 
