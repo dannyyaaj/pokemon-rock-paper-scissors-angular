@@ -1,34 +1,34 @@
 .choice {
-  display: inline-block;
-  border: 0.25em solid transparent;
-  border-radius: 50%;
-  margin: 2em;
-  // padding: 2em 2.75em;
-  height: 12em;
-  width: 12em;
-  position: relative;
-  z-index: 0;
-  background: #fff;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  border: 0.25em solid transparent;
+  border-radius: 50%;
+  margin: 2em;
+  height: 12em;
+  width: 12em;
+  background: #fff;
   color: #000;
+  transition: all 0.2s ease;
 
   h3 {
     margin-top: 0.75em;
     font-size: 1rem;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -webkit-text-size-adjust: none;
     color: inherit;
     text-decoration: none;
+    user-select: none;
+  }
+
+  img {
+    border-radius: 50%;
+    transition: transform 0.3s ease-in;
+    max-width: 100%;
+    height: auto;
   }
 
   &:hover {
     cursor: pointer;
-    transition: all 0.2s ease;
 
     h3 {
       color: #fff;
@@ -38,38 +38,28 @@
       transform: scale(1.25);
     }
   }
-
-  img {
-    position: relative;
-    z-index: -1;
-    display: inline-block;
-    border-radius: 50%;
-    transition: 0.3s transform ease-in;
-    max-width: 100%;
-    height: auto;
-  }
 }
 
 #bulbasaur {
-  border-color: forestgreen;
+  border-color: var(--bulbasaur);
   &:hover {
+    background: var(--bulbasaur);
     border-color: #fff;
-    background: forestgreen;
   }
 }
 
 #charmander {
-  border-color: firebrick;
+  border-color: var(--charmander);
   &:hover {
+    background: var(--charmander);
     border-color: #fff;
-    background: firebrick;
   }
 }
 
 #squirtle {
-  border-color: royalblue;
+  border-color: var(--squirtle);
   &:hover {
+    background: var(--squirtle);
     border-color: #fff;
-    background: royalblue;
   }
 }
