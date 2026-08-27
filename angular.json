@@ -19,7 +19,7 @@
           "options": {
             "outputPath": "dist/pokemon-rock-paper-scissors-angular",
             "index": "src/index.html",
-            "baseHref": "/pokemon-rock-paper-scissors-angular/",
+            "baseHref": "/",
             "main": "src/main.ts",
             "polyfills": [
               "zone.js"
