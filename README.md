@@ -6,7 +6,7 @@ A fun twist on the traditional Rock-Paper-Scissors game, themed around the first
 
 Choose your favorite Pokémon and battle against a computer opponent!
 
-👉 [Try out the game](https://dannyyaaj.github.io/pokemon-rock-paper-scissors-angular)
+👉 [Try out the game](https://pokemon-rock-paper-scissors-angular.vercel.app/)
 
 ## Features
 
