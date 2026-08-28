@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-
+import { GENERATIONS, TYPE_RULES, Generation } from './models/pokemon'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,22 +10,22 @@ export class AppComponent {
   compScore = 0;
   resultText = '';
 
-  private rules: { [key: string]: string } = {
-    bulbasaur: 'squirtle',  // bulbasaur beats squirtle
-    squirtle: 'charmander', // squirtle beats charmander
-    charmander: 'bulbasaur' // charmander beats bulbasaur
-  }
+  readonly allGenerations = GENERATIONS;
+  currentGeneration: Generation = GENERATIONS[0];
 
-  readonly starters: string[] = ['bulbasaur', 'charmander', 'squirtle'];
 
   calculateResults(playerChoice: string) {
     const opponentChoice = this.getRandomStarter()
     const user = '(you)'
     const opp = '(opponent)'
 
+
+    const playerStarter = this.currentGeneration.starters.find(s => s.name === playerChoice)!
+    const opponentStarter = this.currentGeneration.starters.find(s => s.name === opponentChoice)!
+
     if (playerChoice === opponentChoice) {
       this.resultText = `It's a draw! You both picked ${this.capitalize(playerChoice)}.`
-    } else if (this.rules[playerChoice] === opponentChoice) {
+    } else if (TYPE_RULES[playerStarter.gameType] === opponentStarter.gameType) {
       this.userScore++
       this.resultText = `${this.capitalize(playerChoice)} ${user} beats ${this.capitalize(opponentChoice)} ${opp}. You win!`
     } else {
@@ -39,8 +39,15 @@ export class AppComponent {
   }
 
   private getRandomStarter(): string {
-    const randIndex = Math.floor(Math.random() * this.starters.length)
-    return this.starters[randIndex]
+    const starters = this.currentGeneration.starters
+    const randIndex = Math.floor(Math.random() * starters.length)
+    return starters[randIndex].name
+  }
+
+
+  switchGeneration(gen: Generation) {
+    this.currentGeneration = gen
+    this.resetScoreBoard()
   }
 
   resetScoreBoard() {
