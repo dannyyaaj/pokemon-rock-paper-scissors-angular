@@ -1,0 +1,25 @@
+@import './styles/variables';
+
+.generation-selector {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  font-family: Asap, sans-serif;
+  font-weight: bold;
+  color: white;
+  background-color: var(--blue);
+  border: 3px solid var(--yellow);
+  border-radius: 1rem;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    background-color: var(--red);
+  }
+
+  option {
+    background-color: var(--blue);
+    color: white;
+  }
+}

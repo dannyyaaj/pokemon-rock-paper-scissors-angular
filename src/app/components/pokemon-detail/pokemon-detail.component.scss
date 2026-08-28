@@ -18,11 +18,35 @@
     text-decoration: none;
     user-select: none;
     position: absolute;
-    top: 1.25em;
+    top: 0.75em;
     right: 0;
     bottom: auto;
     left: 0;
     transition: all 0.2s ease;
+  }
+
+  .type-badges {
+    position: absolute;
+    top: 2.25em;
+    display: flex;
+    gap: 0.25em;
+    z-index: 1;
+  }
+
+  .type-badge {
+    font-size: 0.6rem;
+    font-weight: 600;
+    padding: 0.15em 0.5em;
+    border-radius: 999px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+
+    &.grass-badge { background-color: var(--grass); }
+    &.fire-badge { background-color: var(--fire); }
+    &.water-badge { background-color: var(--water); }
+    &.poison-badge { background-color: var(--poison); }
+    &.flying-badge { background-color: var(--flying); }
   }
 
   img {
@@ -46,26 +70,26 @@
   }
 }
 
-#bulbasaur {
-  border-color: var(--bulbasaur);
+.grass-type {
+  border-color: var(--grass);
   &:hover {
-    background: var(--bulbasaur);
+    background: var(--grass);
     border-color: #fff;
   }
 }
 
-#charmander {
-  border-color: var(--charmander);
+.fire-type {
+  border-color: var(--fire);
   &:hover {
-    background: var(--charmander);
+    background: var(--fire);
     border-color: #fff;
   }
 }
 
-#squirtle {
-  border-color: var(--squirtle);
+.water-type {
+  border-color: var(--water);
   &:hover {
-    background: var(--squirtle);
+    background: var(--water);
     border-color: #fff;
   }
 }

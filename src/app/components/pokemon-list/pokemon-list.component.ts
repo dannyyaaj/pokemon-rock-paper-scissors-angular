@@ -1,6 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core'
 import { Observable, forkJoin } from 'rxjs'
-import { Pokemon } from 'src/app/models/pokemon'
+import { Pokemon, Starter } from 'src/app/models/pokemon'
 import { PokemonService } from 'src/app/services/pokemon.service'
 
 @Component({
@@ -8,24 +8,24 @@ import { PokemonService } from 'src/app/services/pokemon.service'
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.scss']
 })
-export class PokemonListComponent implements OnInit {
+export class PokemonListComponent implements OnChanges {
+  @Input() starters!: Starter[]
   @Output() pokemonSelected = new EventEmitter<string>();
 
   onSelect(code: string) {
     this.pokemonSelected.emit(code)
   }
 
-  readonly starters: string[] = ['bulbasaur', 'charmander', 'squirtle'];
   pokemonStarters$!: Observable<Pokemon[]>
 
   constructor(private pokemonService: PokemonService) { }
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.pokemonStarters$ = this.getPokemon(this.starters)
   }
 
-  private getPokemon(names: string[]): Observable<Pokemon[]> {
-    return forkJoin(names.map(name => this.pokemonService.getPokemonDetail(name)))
+  private getPokemon(pokemons: Starter[]): Observable<Pokemon[]> {
+    return forkJoin(pokemons.map(pokemon => this.pokemonService.getPokemonDetail(pokemon.name)))
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core'
-import { Pokemon } from 'src/app/models/pokemon'
+import { GameType, Pokemon } from 'src/app/models/pokemon'
 
 @Component({
   selector: 'poke-pokemon-detail',
@@ -8,6 +8,8 @@ import { Pokemon } from 'src/app/models/pokemon'
 })
 export class PokemonDetailComponent {
   @Input() pokemon!: Pokemon
+  @Input() gameType!: GameType
+  @Input() secondaryType?: string
   @Output() pokemonChoice = new EventEmitter<string>();
 
   onClick(): void {

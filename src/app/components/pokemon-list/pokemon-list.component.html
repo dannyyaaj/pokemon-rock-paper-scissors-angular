@@ -1,4 +1,5 @@
 <div class="container" *ngIf="pokemonStarters$ | async as pokemonStarters">
-  <poke-pokemon-detail *ngFor="let pokemon of pokemonStarters" [pokemon]="pokemon"
-    (pokemonChoice)="onSelect($event)"></poke-pokemon-detail>
+  <poke-pokemon-detail *ngFor="let pokemon of pokemonStarters; let i = index" [pokemon]="pokemon"
+    [gameType]="starters[i].gameType" [secondaryType]="starters[i].secondaryType" (pokemonChoice)="onSelect($event)">
+  </poke-pokemon-detail>
 </div>

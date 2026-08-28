@@ -1,4 +1,10 @@
 <poke-header></poke-header>
+<select class="generation-selector" (change)="switchGeneration(allGenerations[$any($event.target).value])">
+  <option *ngFor="let gen of allGenerations; let i = index" [value]="i">
+    {{ gen.label }}
+  </option>
+</select>
 <poke-score-board [userScore]="userScore" [compScore]="compScore" (resetScores)="resetScoreBoard()"></poke-score-board>
 <poke-result [resultText]="resultText"></poke-result>
-<poke-pokemon-list (pokemonSelected)="calculateResults($event)"></poke-pokemon-list>
+<poke-pokemon-list (pokemonSelected)="calculateResults($event)"
+  [starters]="currentGeneration.starters"></poke-pokemon-list>
