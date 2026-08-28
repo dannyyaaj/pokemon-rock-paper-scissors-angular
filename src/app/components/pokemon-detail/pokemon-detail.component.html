@@ -1,8 +1,8 @@
 <button [ngClass]="['choice', gameType + '-type']" class="choice" (click)="onClick()">
   <h3>{{ pokemon.name | titlecase }}</h3>
-  <div class="type-badges">
-    <span [ngClass]="['type-badge', gameType + '-badge']">{{ gameType | titlecase }}</span>
-    <span *ngIf="secondaryType" [ngClass]="['type-badge', secondaryType + '-badge']">{{ secondaryType | titlecase }}</span>
-  </div>
   <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
 </button>
+<div class="type-badges">
+  <span [ngClass]="['type-badge', gameType + '-badge']">{{ gameType | titlecase }}</span>
+  <span *ngIf="secondaryType" [ngClass]="['type-badge', secondaryType + '-badge']">{{ secondaryType | titlecase }}</span>
+</div>
